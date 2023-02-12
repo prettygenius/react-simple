@@ -1,20 +1,18 @@
-    import { useState } from "react"
+import { useState } from "react";
 
-    function CountButton(props) {
+function CountButton(props) {
+  const [count, setCount] = useState(0);
 
-        const [count, setCount] = useState(0)
+  function handleClick() {
+    setCount((prev) => prev + props.increment);
+  }
 
-         function handleClick() {
-          setCount(count + props.increment)
-        }
+  return (
+    <div className="card">
+      <button onClick={handleClick}>+{props.increment}</button>
+      <h1>current count is {count}</h1>
+    </div>
+  );
+}
 
-        return(
-            <div className="card">
-            <button onClick={handleClick}>+{props.increment}</button>
-            <h1>current count is {count}</h1>
-    
-          </div>
-        )
-    }
-
-    export default CountButton
+export default CountButton;
